@@ -1,0 +1,353 @@
+.main-container {
+  background-color: #161625;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.search-result-container {
+  list-style-type: none;
+  width: 60%;
+  margin-right: 30px;
+  margin-top: 0px;
+  overflow: hidden;
+  overflow-y: auto;
+  height: 200px;
+}
+.search-container {
+  background: #2f2f43;
+  border-radius: 8px;
+  margin: 32px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 57.22%;
+  padding: 18px;
+}
+@media screen and (max-width: 600px) {
+  .search-container {
+    width: 80%;
+  }
+}
+.search-icon {
+  color: #94a3b8;
+  font-size: 20px;
+  margin: 0px 20px;
+}
+
+.search-bar {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  width: 90%;
+  padding-right: 20px;
+  color: #94a3b8;
+}
+@media screen and (max-width: 600px) {
+  .search-bar {
+    font-size: 14px;
+  }
+}
+
+.country-stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 80%;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 600px) {
+  .country-stats {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+.stats-block-column {
+  text-align: center;
+  margin: 0px 10px;
+}
+
+.stats-title-red {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ff073a;
+}
+.stats-title-blue {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #007bff;
+}
+.stats-title-green {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #28a745;
+}
+.stats-title-gray {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #6c757d;
+}
+@media screen and (max-width: 600px) {
+  .stats-title-red {
+    font-size: 13px;
+  }
+  .stats-title-blue {
+    font-size: 13px;
+  }
+  .stats-title-green {
+    font-size: 13px;
+  }
+  .stats-title-gray {
+    font-size: 13px;
+  }
+}
+.stats-icon-red {
+  font-size: 38px;
+  color: #ff073a;
+}
+.stats-icon-green {
+  font-size: 38px;
+  color: #28a745;
+}
+.stats-icon-blue {
+  font-size: 38px;
+  color: #007bff;
+}
+.stats-icon-gray {
+  font-size: 38px;
+  color: #6c757d;
+}
+@media screen and (max-width: 600px) {
+  .stats-icon-red {
+    height: 25px;
+  }
+  .stats-icon-green {
+    height: 25px;
+  }
+  .stats-icon-blue {
+    height: 25px;
+  }
+  .stats-icon-gray {
+    height: 25px;
+  }
+}
+.stats-number-red {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 24px;
+  color: #ff073a;
+}
+.stats-number-blue {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 24px;
+  color: #007bff;
+}
+.stats-number-green {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 24px;
+  color: #28a745;
+}
+.stats-number-gray {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 24px;
+  color: #6c757d;
+}
+@media screen and (max-width: 600px) {
+  .stats-number-red {
+    font-size: 15px;
+  }
+  .stats-number-blue {
+    font-size: 15px;
+  }
+  .stats-number-green {
+    font-size: 15px;
+  }
+  .stats-number-gray {
+    font-size: 15px;
+  }
+}
+.red {
+  color: #ff073a;
+}
+.blue {
+  color: #007bff;
+}
+.green {
+  color: #28a745;
+}
+.gray {
+  color: #6c757d;
+}
+
+.list {
+  list-style-type: none;
+}
+.all-states-table {
+  width: 100%;
+  background: #1e1e30;
+  border: 1px solid #475569;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.16);
+  border-radius: 12px;
+  align-self: flex-start;
+  margin-bottom: 25px;
+}
+
+.table-header {
+  border-bottom: 1px solid #475569;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  height: 72px;
+}
+
+.state-table {
+  width: 90%;
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 600px) {
+  .state-table {
+    margin-top: 30px;
+  }
+}
+.table-header-title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  color: #f8fafc;
+}
+@media screen and (max-width: 600px) {
+  .table-header-title {
+    font-size: 13px;
+  }
+}
+.state-wise-data-container {
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (max-width: 600px) {
+  .state-wise-data-container {
+    width: 100%;
+  }
+}
+.states-names {
+  width: 22%;
+}
+
+.state-name-heading {
+  width: 22%;
+  padding: 0px 32px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+@media screen and (max-width: 600px) {
+  .state-name-heading {
+    padding-left: 10px;
+    width: 25%;
+  }
+}
+.order {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+@media screen and (max-width: 600px) {
+  .order {
+    font-size: 15px;
+  }
+}
+.order-icon {
+  color: #94a3b8;
+  background-color: transparent;
+}
+@media screen and (max-width: 600px) {
+  .order-icon {
+    margin: 0px;
+  }
+}
+.other-tables-bar {
+  width: 15.6%;
+}
+@media screen and (max-width: 600px) {
+  .other-tables-bar {
+    width: 20%;
+    padding: 0px;
+  }
+}
+.other-tables {
+  padding: 0;
+  list-style-type: none;
+}
+@media screen and (max-width: 600px) {
+  .other-tables {
+    padding: 0px;
+    list-style-type: none;
+    margin: 0px;
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .all-states-table {
+    width: 100%;
+    justify-content: center;
+  }
+}
+.Home-loader-container {
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.footer {
+  float: bottom;
+}
