@@ -5,6 +5,7 @@ import {BsSearch} from 'react-icons/bs'
 import StateListDetails from '../StateListDetails'
 import Header from '../Header'
 import Footer from '../Footer'
+import SearchItem from '../SearchItem'
 
 import './index.css'
 
@@ -162,6 +163,9 @@ class Home extends Component {
     totalConfirmedCases: 0,
     totalRecoveredCases: 0,
     totalDeceasedCases: 0,
+    search: '',
+    filteredSearchList: [],
+    statesinfo: [],
   }
 
   componentDidMount() {
@@ -370,8 +374,45 @@ class Home extends Component {
     )
   }
 
+  searchStarted = event => {
+    const searchItem = event.target.value
+    const searchResult = statesList.filter(data =>
+      data.state_name.toLowerCase().includes(searchItem.toLowerCase()),
+    )
+
+    return this.setState({
+      search: event.target.value,
+      filteredSearchList: searchResult,
+    })
+  }
+
+  showSearchList = () => {
+    const {filteredSearchList} = this.state
+
+    return (
+      <ul
+        className="search-result-container"
+        testid="searchResultsUnorderedList"
+      >
+        {filteredSearchList.map(each => {
+          console.log(each)
+          return (
+            <SearchItem
+              key={each.state_code}
+              stateName={each.state_name}
+              stateCode={each.state_code}
+              id={each.state_code}
+            />
+          )
+        })}
+      </ul>
+    )
+  }
+
   render() {
-    const {isLoading} = this.state
+    const {isLoading, filteredSearchList, search} = this.state
+    const showSearchList =
+      filteredSearchList.length === 0 ? '' : this.showSearchList()
 
     return (
       <>
@@ -384,8 +425,10 @@ class Home extends Component {
                 type="search"
                 placeholder="Enter the State"
                 className="search-bar"
+                onChange={this.searchStarted}
               />
             </div>
+            {search.length > 0 ? showSearchList : ''}
             {isLoading ? (
               this.renderLoadingView()
             ) : (

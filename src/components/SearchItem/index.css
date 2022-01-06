@@ -1,0 +1,56 @@
+.innerCont {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.head {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
+  color: #64748b;
+}
+.shortName {
+  color: #facc15;
+}
+
+.saerchBtn {
+  background: rgba(28, 212, 212, 0.16);
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  text-align: center;
+}
+.searchContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.icon-right {
+  margin-left: 5px;
+  font-size: 20px;
+}
+
+.link-cont {
+  text-decoration: none;
+  cursor: pointer;
+}
+.horizontal-line {
+  width: 100%;
+  border: #64748b 0.3px solid;
+  opacity: 0.3;
+}
