@@ -40,7 +40,7 @@
   flex-direction: row;
   justify-content: space-between;
 }
-.icon-right {
+.iconItem {
   margin-left: 5px;
   font-size: 20px;
 }

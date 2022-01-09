@@ -1,0 +1,27 @@
+.district-numbers {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  color: #94a3b8;
+  margin-right: 10px;
+  width: 75px;
+  margin-top: 0px;
+}
+.district-name {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  color: #94a3b8;
+  margin-top: 0px;
+}
+.list-style {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  list-style-type: none;
+  width: 250px;
+  margin-right: 15px;
+}

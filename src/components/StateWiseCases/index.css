@@ -1,0 +1,194 @@
+.state-name-container {
+  margin: 10px;
+  background: rgba(2, 132, 199, 0.16);
+  border-radius: 32px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  padding: 15px;
+  color: #0ea5e9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 280px;
+  text-align: center;
+}
+.testno-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 30px;
+}
+.state-name-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 97%;
+}
+.main-container {
+  min-height: 100vh;
+}
+.state-details {
+  width: 92%;
+  margin-top: 20px;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+.test-title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #94a3b8;
+  margin-bottom: 0px;
+}
+
+.testno {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #94a3b8;
+  margin-top: 10px;
+}
+.last-date {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 24px;
+  color: #cbd5e1;
+}
+.name-and-date {
+  width: 50%;
+}
+.country-stats {
+  width: 100%;
+}
+.align-center-row {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+.hovereffectconfirm:active {
+  background-color: #331427;
+}
+
+.district-heading {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 48px;
+}
+
+.confirm {
+  color: #ff073a;
+}
+
+.confirmed-block {
+  background: #331427;
+  border-radius: 12px;
+  padding: 42px;
+}
+.active-block {
+  background: #132240;
+  border-radius: 12px;
+  padding: 42px;
+}
+.recovered-block {
+  background: #182829;
+  border-radius: 12px;
+  padding: 42px;
+}
+.deceased-block {
+  background: #212230;
+  border-radius: 12px;
+  padding: 42px;
+}
+
+.total-district-data-block {
+  width: 100%;
+  margin-top: 60px;
+}
+.district-data-ul-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  list-style-type: none;
+  flex-wrap: wrap;
+}
+.districts-container {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  line-height: 28px;
+  flex: 4;
+  margin-top: 20px;
+}
+.State-loader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 30px;
+}
+
+.ul-parent-list {
+  list-style-type: none;
+}
+
+.Confirmed-color {
+  color: #ff073a;
+}
+.Active-color {
+  color: #007bff;
+}
+.Recovered-color {
+  color: #28a745;
+}
+.Deceased-color {
+  color: #6c757d;
+}
+
+.list-style-state {
+  list-style-type: none;
+}
+
+.graphs-data {
+  margin-top: 80px;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .state-name-container {
+    font-size: 16px;
+  }
+
+  .test-title {
+    font-size: 12px;
+  }
+  .testno {
+    font-size: 16px;
+  }
+  .last-date {
+    font-size: 12px;
+  }
+}
