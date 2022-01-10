@@ -34,6 +34,7 @@
 
 .Confirmed {
   color: #ff073a;
+  transition: all 0.7s ease;
 }
 .Confirmed:focus {
   background: #331427;
@@ -43,6 +44,7 @@
 }
 .Active {
   color: #007bff;
+  transition: all 0.7s ease;
 }
 .Active:focus {
   background: #132240;
@@ -52,6 +54,7 @@
 }
 .Recovered {
   color: #28a745;
+  transition: all 0.7s ease;
 }
 .Recovered:focus {
   background: #182829;
@@ -61,6 +64,7 @@
 }
 .Deceased {
   color: #6c757d;
+  transition: all 0.7s ease;
 }
 .Deceased:focus {
   background: #212230;

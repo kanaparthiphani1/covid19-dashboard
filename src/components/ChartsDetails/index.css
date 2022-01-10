@@ -18,7 +18,7 @@
 }
 .charts {
   border-radius: 12px;
-  margin-bottom: 32px;
+  margin-bottom: 45px;
   padding: 40px;
   overflow-x: auto;
 }
@@ -45,8 +45,28 @@
   font-size: 25px;
   line-height: 48px;
   color: #cbd5e1;
+
+  margin: 0;
   margin-top: 70px;
-  margin-bottom: 50px;
+}
+
+.select-out-cont {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.charts-sub-title {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 19px;
+  line-height: 48px;
+  color: #cbd5e1;
+  margin: 0;
+  margin-bottom: 4px;
+  margin-right: 20px;
 }
 
 .bar-chart-container {
@@ -72,7 +92,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 28px;
-
+  width: 250px;
   color: #f8fafc;
 }
 
