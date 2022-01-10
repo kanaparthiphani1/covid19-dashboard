@@ -17,6 +17,7 @@ class ChartsDetails extends Component {
     alldata: '',
     forOtherChart: '',
     isLoading: true,
+    category: 'confirmed',
   }
 
   componentDidMount() {
@@ -61,6 +62,8 @@ class ChartsDetails extends Component {
             data[stateCode].dates[date].total.recovered),
       }))
 
+      console.log('forOtherChart : ', particularStateForOtherChart)
+
       this.setState({
         alldata: particularState,
         forOtherChart: particularStateForOtherChart,
@@ -76,8 +79,7 @@ class ChartsDetails extends Component {
   )
 
   barChart = () => {
-    const {alldata} = this.state
-    const {category} = this.props
+    const {alldata, category} = this.state
     const barChartType = category.toLowerCase()
 
     const toptendata = alldata.slice(Math.max(alldata.length - 10, 0))
@@ -120,6 +122,7 @@ class ChartsDetails extends Component {
 
   graph = (type, color) => {
     const {forOtherChart} = this.state
+    console.log(forOtherChart)
     return (
       <div>
         <LineChart
@@ -135,7 +138,7 @@ class ChartsDetails extends Component {
               fontWeight: 500,
               textTransform: 'uppercase',
             }}
-            dy={10}
+            dy={3}
           />
           <YAxis />
           <Tooltip />
@@ -146,8 +149,18 @@ class ChartsDetails extends Component {
     )
   }
 
+  setCatgory = event => {
+    this.setState({category: event.target.value})
+  }
+
   allChartsView = () => (
     <>
+      <select className="select-cont" onChange={this.setCatgory}>
+        <option value="confirmed">Confirmed</option>
+        <option value="active">Active</option>
+        <option value="recovered">Recovered</option>
+        <option value="deceased">Deceased</option>
+      </select>
       <div className="bar-chart-container">{this.barChart()}</div>
       <h1 className="charts-title">Daily Spread Trends</h1>
       <div testid="lineChartsContainer" className="bar-charts-container">

@@ -60,6 +60,22 @@
   overflow-x: auto;
 }
 
+.select-cont {
+  background: #2f2f43;
+  opacity: 0.5;
+  border-radius: 12px;
+  padding: 10px 19px;
+  padding-right: 10px;
+  color: white;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 28px;
+
+  color: #f8fafc;
+}
+
 @media (max-width: 600px) {
   .charts {
     width: 100%;
