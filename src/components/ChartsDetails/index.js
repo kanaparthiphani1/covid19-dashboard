@@ -165,7 +165,6 @@ class ChartsDetails extends Component {
     districtWiseDate: [],
     isLoading: true,
     category: 'confirmed',
-    forOtherChart: '',
     districtSelected: 'Krishna',
     stateWithIds: [],
     districts: [],
@@ -242,18 +241,6 @@ class ChartsDetails extends Component {
             data[stateCode].dates[date].total.recovered),
       }))
 
-      const particularStateForOtherChart = dataDateWise.map(date => ({
-        date,
-        confirmed: data[stateCode].dates[date].total.confirmed,
-        deceased: data[stateCode].dates[date].total.deceased,
-        recovered: data[stateCode].dates[date].total.recovered,
-        tested: data[stateCode].dates[date].total.tested,
-        active:
-          data[stateCode].dates[date].total.confirmed -
-          (data[stateCode].dates[date].total.deceased +
-            data[stateCode].dates[date].total.recovered),
-      }))
-
       const eachDistritEachDate = districtWise.map(eachDis => {
         const districtDateWise = Object.keys(
           data[stateCode].districts[eachDis].dates,
@@ -282,7 +269,6 @@ class ChartsDetails extends Component {
 
       this.setState({
         alldata: particularState,
-        forOtherChart: particularStateForOtherChart,
         isLoading: false,
         districtWiseDate: eachDistritEachDate,
       })
@@ -295,9 +281,30 @@ class ChartsDetails extends Component {
     </div>
   )
 
+  numFormatter = num => {
+    if (num > 999 && num < 1000000) {
+      return (num / 1000).toFixed(1).toString().concat('K') // convert to K for number from > 1000 < 1 million
+    }
+    if (num > 1000000) {
+      return (num / 1000000).toFixed(1).toString().concat('M') // convert to M for number from > 1 million
+    }
+    if (num < 900) {
+      return num // if value < 1000, nothing to do
+    }
+    return num
+  }
+
+  dateFormatter = date =>
+    new Date(date).toLocaleDateString('en-us', {
+      month: 'short',
+      day: 'numeric',
+    })
+
   barChart = () => {
     const {alldata, category} = this.state
     const barChartType = category.toLowerCase()
+
+    console.log('all data: ', alldata)
 
     const toptendata = alldata.slice(Math.max(alldata.length - 10, 0))
     let colortype = '#9A0E31'
@@ -323,13 +330,19 @@ class ChartsDetails extends Component {
               textTransform: 'uppercase',
             }}
             dy={10}
+            axisLine={false}
+            tickFormatter={this.dateFormatter}
           />
           <Tooltip />
-          <Legend />
+          {/* <Legend /> */}
           <Bar
             dataKey={`${barChartType}`}
             fill={`${colortype}`}
-            label={{position: 'top', fill: '#fff'}}
+            label={{
+              position: 'top',
+              fill: 'rgba(255,255,255)',
+              formatter: this.numFormatter,
+            }}
             radius={[8, 8, 0, 0]}
           />
         </BarChart>

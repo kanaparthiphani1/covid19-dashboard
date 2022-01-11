@@ -13,9 +13,27 @@ export default function Footer() {
         we stand with everyone fighting on the front lines
       </p>
       <div className="icons-container">
-        <VscGithubAlt className="footer-icon" />
-        <FiInstagram className="footer-icon" />
-        <FaTwitter className="footer-icon" />
+        <a
+          href="https://github.com/kanaparthiphani1"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <VscGithubAlt className="footer-icon" />
+        </a>
+        <a
+          href="https://www.instagram.com/kanaparthi_phani/"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <FiInstagram href="" className="footer-icon" />
+        </a>
+        <a
+          href="https://twitter.com/KanaparthiSaiV1"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <FaTwitter href="" className="footer-icon" />
+        </a>
       </div>
     </div>
   )

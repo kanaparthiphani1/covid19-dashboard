@@ -324,7 +324,9 @@ class StateCases extends Component {
       <div className="main-container">
         <Header />
         <div className="container">{renderData}</div>
-        <Footer />
+        <div className="footer">
+          <Footer />
+        </div>
       </div>
     )
   }
