@@ -1,5 +1,8 @@
 import {Component} from 'react'
 import Loader from 'react-loader-spinner'
+import India from '@svg-maps/india'
+import {SVGMap} from 'react-svg-map'
+import 'react-svg-map/lib/index.css'
 import {FcGenericSortingAsc, FcGenericSortingDesc} from 'react-icons/fc'
 import {BsSearch} from 'react-icons/bs'
 import StateListDetails from '../StateListDetails'
@@ -8,6 +11,48 @@ import Footer from '../Footer'
 import SearchItem from '../SearchItem'
 
 import './index.css'
+
+const stateWIthIds = [
+  {
+    name: 'Andaman and Nicobar Islands',
+    id: 'an',
+  },
+  {name: 'Andhra Pradesh', id: 'ap'},
+  {name: 'Arunachal Pradesh', id: 'ar'},
+  {name: 'Assam', id: 'as'},
+  {name: 'Bihar', id: 'br'},
+  {name: 'Chandigarh', id: 'ch'},
+  {name: 'Chhattisgarh', id: 'ct'},
+  {name: 'Dadra and Nagar Haveli', id: 'dn'},
+  {name: 'Daman and Diu', id: 'dd'},
+  {name: 'Delhi', id: 'dl'},
+  {name: 'Goa', id: 'ga'},
+  {name: 'Gujarat', id: 'gj'},
+  {name: 'Haryana', id: 'hr'},
+  {name: 'Himachal Pradesh', id: 'hp'},
+  {name: 'Jammu and Kashmir', id: 'jk'},
+  {name: 'Jharkhand', id: 'jh'},
+  {name: 'Karnataka', id: 'ka'},
+  {name: 'Kerala', id: 'kl'},
+  {name: 'Lakshadweep', id: 'ld'},
+  {name: 'Madhya Pradesh', id: 'mp'},
+  {name: 'Maharashtra', id: 'mh'},
+  {name: 'Manipur', id: 'mn'},
+  {name: 'Meghalaya', id: 'ml'},
+  {name: 'Mizoram', id: 'mz'},
+  {name: 'Nagaland', id: 'nl'},
+  {name: 'Odisha', id: 'or'},
+  {name: 'Puducherry', id: 'py'},
+  {name: 'Punjab', id: 'pb'},
+  {name: 'Rajasthan', id: 'rj'},
+  {name: 'Sikkim', id: 'sk'},
+  {name: 'Tamil Nadu', id: 'tn'},
+  {name: 'Telangana', id: 'tg'},
+  {name: 'Tripura', id: 'tr'},
+  {name: 'Uttar Pradesh', id: 'up'},
+  {name: 'Uttarakhand', id: 'ut'},
+  {name: 'West Bengal', id: 'wb'},
+]
 
 const statesList = [
   {
@@ -166,10 +211,29 @@ class Home extends Component {
     search: '',
     filteredSearchList: [],
     statesinfo: [],
+    pointedLocation: null,
+    focusedLocation: '',
+    selectedLocation: null,
   }
 
   componentDidMount() {
     this.getAllData()
+  }
+
+  getLocationId = event => event.target.id
+
+  getLocationName = event => event.target.attributes.name.value
+
+  handleLocationFocus = event => {
+    const focusedLocation = this.getLocationName(event)
+    this.setState({focusedLocation})
+  }
+
+  handleOnChange = selectedNode => {
+    this.setState(prevState => ({
+      ...prevState,
+      selectedLocation: selectedNode.attributes.name.value,
+    }))
   }
 
   getAllData = async () => {
@@ -185,6 +249,8 @@ class Home extends Component {
       let totalRecoveredCases = 0
       let totalDeceasedCases = 0
       let totalActiveCases = 0
+
+      console.log('STATE-LIST : ', data)
 
       statesList.forEach(state => {
         if (data[state.state_code]) {
@@ -325,6 +391,8 @@ class Home extends Component {
   renderAllStatesList = () => {
     const {statesinfo} = this.state
 
+    console.log('State info : ', statesinfo)
+
     return (
       <div className="all-states-table" testid="stateWiseCovidDataTable">
         <div className="table-header">
@@ -409,8 +477,83 @@ class Home extends Component {
     )
   }
 
+  handleLocationMouseOver = event => {
+    console.log('location event : ', event)
+    const pointedLocation = event.target.attributes.name.value
+    this.setState({pointedLocation})
+  }
+
+  getLocationId = () => {
+    const {nameOfState} = this.state
+    const state = stateWIthIds.filter(eachItem => eachItem.name === nameOfState)
+    console.log('STATE : ', state)
+    return [state[0].id]
+  }
+
+  getPopulationOfMapState = stateNam => {
+    const {statesinfo} = this.state
+    const stateStats = statesinfo.filter(
+      eachState => eachState.stateName === stateNam,
+    )
+    console.log('selected : ', stateStats)
+    if (stateStats.length > 0) {
+      console.log('selected : ', stateStats[0].population[0])
+      return this.renderNumbersInIndianFormat(stateStats[0].population[0])
+    }
+    return ''
+  }
+
+  getActiveOfMapState = stateNam => {
+    const {statesinfo} = this.state
+    const stateStats = statesinfo.filter(
+      eachState => eachState.stateName === stateNam,
+    )
+    console.log('selected : ', stateStats)
+    if (stateStats.length > 0) {
+      console.log('selected : ', stateStats[0].confirmed[0])
+      return this.renderNumbersInIndianFormat(
+        stateStats[0].confirmed[0] -
+          stateStats[0].recovered[0] -
+          stateStats[0].deceased[0],
+      )
+    }
+    return ''
+  }
+
+  getRecoveredOfMapState = stateNam => {
+    const {statesinfo} = this.state
+    const stateStats = statesinfo.filter(
+      eachState => eachState.stateName === stateNam,
+    )
+    console.log('selected : ', stateStats)
+    if (stateStats.length > 0) {
+      console.log('selected : ', stateStats[0].recovered[0])
+      return this.renderNumbersInIndianFormat(stateStats[0].recovered[0])
+    }
+    return ''
+  }
+
+  getDeceasedOfMapState = stateNam => {
+    const {statesinfo} = this.state
+    const stateStats = statesinfo.filter(
+      eachState => eachState.stateName === stateNam,
+    )
+    console.log('selected : ', stateStats)
+    if (stateStats.length > 0) {
+      console.log('selected : ', stateStats[0].deceased[0])
+      return this.renderNumbersInIndianFormat(stateStats[0].deceased[0])
+    }
+    return ''
+  }
+
   render() {
-    const {isLoading, filteredSearchList, search} = this.state
+    const {
+      isLoading,
+      filteredSearchList,
+      search,
+      selectedLocation,
+      focusedLocation,
+    } = this.state
     const showSearchList =
       filteredSearchList.length === 0 ? '' : this.showSearchList()
 
@@ -435,6 +578,34 @@ class Home extends Component {
               <>
                 <div className="country-stats">
                   {this.renderAllNationalData()}
+                </div>
+                <div className="map-out-cont">
+                  <SVGMap
+                    map={India}
+                    className="map-cont"
+                    onLocationFocus={this.handleLocationFocus}
+                    onChange={this.handleOnChange}
+                  />
+                  {focusedLocation.length > 0 && (
+                    <div className="focused-state-cont">
+                      <h1>{focusedLocation}</h1>
+
+                      <h3>
+                        Population :
+                        {this.getPopulationOfMapState(focusedLocation)}
+                      </h3>
+                      <h3>
+                        Active : {this.getActiveOfMapState(focusedLocation)}
+                      </h3>
+                      <h3>
+                        Recovered :{' '}
+                        {this.getRecoveredOfMapState(focusedLocation)}
+                      </h3>
+                      <h3>
+                        Deceased : {this.getDeceasedOfMapState(focusedLocation)}
+                      </h3>
+                    </div>
+                  )}
                 </div>
                 <div className="state-table">{this.renderAllStatesList()}</div>
               </>

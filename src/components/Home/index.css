@@ -5,6 +5,23 @@
   padding: 0;
 }
 
+.map-out-cont {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  align-items: center;
+  padding: 20px;
+  margin-top: 40px;
+  color: wheat;
+}
+
+.focused-state-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
 .container {
   width: 100%;
   display: flex;
